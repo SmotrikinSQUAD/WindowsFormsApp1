@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using WindowsFormsApp1.dbhandler;
+using WindowsFormsApp1.UserControls;
 
 namespace WindowsFormsApp1
 {
@@ -19,7 +20,7 @@ namespace WindowsFormsApp1
     {
 
         Menu menu;
-
+        AdminPanel adminPanel;
 
         public Form1()
         {
@@ -32,13 +33,21 @@ namespace WindowsFormsApp1
         {
 
             Controls.Add(menu = new Menu());
+            adminPanel = new AdminPanel();
+            adminPanel.OnBackToMenu += OnBackToMenu;
+
+            adminPanel.OnTopicClick += (topic, words) =>
+            {
+                Controls.Clear();
+                Controls.Add(new Edit(topic, words));
+            };
 
             menu.OnEnterAction += (login, password) =>
             {
                 if (login == "admin" && password == "111")
                 {
                     Controls.Clear();
-                    Controls.Add(new UserControls.AdminPanel());
+                    Controls.Add(adminPanel);
                 }
                 else
                 {
@@ -51,11 +60,13 @@ namespace WindowsFormsApp1
                 Controls.Clear();
                 Controls.Add(new UserControls.GameMode());
             };
-
-
         }
 
-
+        private void OnBackToMenu()
+        {
+            Controls.Clear();
+            Controls.Add(menu);
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {

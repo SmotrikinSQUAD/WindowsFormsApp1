@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assisters\UserControlsHandler.cs" />
     <Compile Include="dbhandler\dbManager.cs" />
     <Compile Include="dbhandler\MyModel.cs" />
     <Compile Include="dbhandler\topic.cs" />
@@ -87,6 +88,18 @@
     </Compile>
     <Compile Include="UserControls\AdminPanel.Designer.cs">
       <DependentUpon>AdminPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Edit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Edit.Designer.cs">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EditElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\EditElement.Designer.cs">
+      <DependentUpon>EditElement.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\GameMode.cs">
       <SubType>UserControl</SubType>
@@ -115,6 +128,12 @@
     <EmbeddedResource Include="UserControls\AdminPanel.resx">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Edit.resx">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\EditElement.resx">
+      <DependentUpon>EditElement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\GameMode.resx">
       <DependentUpon>GameMode.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,10 +156,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="db.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="db_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>db.mdf</DependentUpon>
     </Content>
   </ItemGroup>

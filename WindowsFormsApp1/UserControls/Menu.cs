@@ -31,6 +31,7 @@ namespace WindowsFormsApp1.UserControls
         private void Enter_Button_Click(object sender, EventArgs e)
         {
             OnEnterAction.Invoke(textBox1.Text, textBox2.Text);
+            textBox2.Clear();
         }
 
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)

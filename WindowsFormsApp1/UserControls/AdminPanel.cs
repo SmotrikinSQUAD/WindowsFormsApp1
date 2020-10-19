@@ -13,6 +13,9 @@ namespace WindowsFormsApp1.UserControls
 {
     public partial class AdminPanel : UserControl
     {
+        public event Action OnBackToMenu;
+        public event Action<string, string[]> OnTopicClick;
+
         public AdminPanel()
         {
             InitializeComponent();
@@ -49,15 +52,13 @@ namespace WindowsFormsApp1.UserControls
             string topic = _sender.Text;
             string raw_words = dbManager.GetTopic(topic).words;
             string[] words = raw_words.Split(new[] { "; " }, StringSplitOptions.RemoveEmptyEntries);
-            MessageBox.Show($"{topic} {words.Length}");
-            Controls.Clear();
-            
 
+            OnTopicClick?.Invoke(topic, words);
         }
 
         private void Butback_Click(object sender, EventArgs e)
         {
-            Controls.Clear();
+            OnBackToMenu?.Invoke(); 
         }
 
         private void AdminPanel_Load(object sender, EventArgs e)
