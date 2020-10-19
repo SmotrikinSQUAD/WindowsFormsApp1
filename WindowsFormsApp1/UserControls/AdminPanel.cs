@@ -8,53 +8,59 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.dbhandler;
-using System.Diagnostics.Tracing;
 
 namespace WindowsFormsApp1.UserControls
 {
-    public partial class GameMode : UserControl
+    public partial class AdminPanel : UserControl
     {
-        public GameMode()
+        public AdminPanel()
         {
             InitializeComponent();
 
-
-            // 1. Get all topics 
             List<topic> topics = dbManager.GetAllTopics();
 
-            // 2. Get random 6 of they
-            topics = topics.OrderBy(a => Guid.NewGuid()).ToList();
+            int count = 0;
 
-            // 3. Output
-            for(int i = 0; i < 6 && i < topics.Count; i++)
+            for (int i = 0; i < topics.Count; i++)
             {
                 Button but = new Button();
                 Controls.Add(but);
-                but.Location = new Point(30, (i+1) * 30);
+                but.Location = new Point(30, (i + 1) * 30);
                 but.Text = topics[i].topic1;
                 but.Click += But_Click;
+                count++;
+            }
+             
+            if (count == topics.Count)
+            {
+                Button butback = new Button();
+                Controls.Add(butback);
+                butback.Location = new Point(130, (count + 1) * 30);
+                butback.AutoSize = true;
+                butback.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                butback.Text = "Вернуться в главное меню";
+                butback.Click += Butback_Click;
             }
         }
 
         private void But_Click(object sender, EventArgs e)
         {
             Button _sender = sender as Button;
-            Random rand = new Random();
             string topic = _sender.Text;
             string raw_words = dbManager.GetTopic(topic).words;
             string[] words = raw_words.Split(new[] { "; " }, StringSplitOptions.RemoveEmptyEntries);
             MessageBox.Show($"{topic} {words.Length}");
-
-            int num = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Введите кол-во раундов:"));
-            List<string> wwords = words.OrderBy(x => rand.Next()).ToList();
-            for (int i = 0; i < num; i++)
-            {
-                MessageBox.Show(string.Join("\n", wwords[i]));
-            }
+            Controls.Clear();
+            
 
         }
 
-        private void GameMode_Load(object sender, EventArgs e)
+        private void Butback_Click(object sender, EventArgs e)
+        {
+            Controls.Clear();
+        }
+
+        private void AdminPanel_Load(object sender, EventArgs e)
         {
 
         }

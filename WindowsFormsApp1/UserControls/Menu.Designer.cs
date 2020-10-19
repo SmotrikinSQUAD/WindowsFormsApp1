@@ -43,9 +43,9 @@
             // 
             // StartGame_Button
             // 
-            this.StartGame_Button.Location = new System.Drawing.Point(144, 235);
+            this.StartGame_Button.Location = new System.Drawing.Point(189, 361);
             this.StartGame_Button.Name = "StartGame_Button";
-            this.StartGame_Button.Size = new System.Drawing.Size(155, 23);
+            this.StartGame_Button.Size = new System.Drawing.Size(284, 80);
             this.StartGame_Button.TabIndex = 0;
             this.StartGame_Button.Text = "Начать игру";
             this.StartGame_Button.UseVisualStyleBackColor = true;
@@ -62,6 +62,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(3, 53);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 2;
             // 
@@ -82,7 +83,7 @@
             this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(450, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(678, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -122,7 +123,8 @@
             this.Controls.Add(this.StartGame_Button);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Menu";
-            this.Size = new System.Drawing.Size(450, 290);
+            this.Size = new System.Drawing.Size(678, 499);
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

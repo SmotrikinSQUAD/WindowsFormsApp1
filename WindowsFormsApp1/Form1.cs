@@ -32,10 +32,20 @@ namespace WindowsFormsApp1
         {
 
             Controls.Add(menu = new Menu());
+
             menu.OnEnterAction += (login, password) =>
             {
-                Controls.Clear();
+                if (login == "admin" && password == "111")
+                {
+                    Controls.Clear();
+                    Controls.Add(new UserControls.AdminPanel());
+                }
+                else
+                {
+                    MessageBox.Show("Неверный логин или пароль.");
+                }
             };
+
             menu.OnStartGameAction += () =>
             {
                 Controls.Clear();
@@ -54,6 +64,7 @@ namespace WindowsFormsApp1
             foreach (var item in list)
             {
                 MessageBox.Show($"Текущий topic = {item.Id}; {item.topic1}; {item.words}");
+
             }
 
             

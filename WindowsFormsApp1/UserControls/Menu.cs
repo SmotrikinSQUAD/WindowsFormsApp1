@@ -37,5 +37,10 @@ namespace WindowsFormsApp1.UserControls
         {
             Help.ShowHelp(this, "");
         }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
